@@ -14,7 +14,7 @@ import CoreData
 class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
 
     @IBOutlet var videoPlayer: YouTubePlayerView!
-    var selectedVideo : Video? {
+    var selectedVideo : SavedVideo? {
         didSet {
             
         }
@@ -27,15 +27,14 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
         
         if let title = selectedVideo?.title {
             self.title = title
-            adjustLargeTitleSize()
+         //   adjustLargeTitleSize()
         }
         
         // Load video from YouTube URL
         SVProgressHUD.show()
         
-        if let url = selectedVideo?.url {
-            let myVideoURL = NSURL(string: url)
-            videoPlayer.loadVideoURL(myVideoURL! as URL)
+        if let videoId = selectedVideo?.videoId {
+            videoPlayer.loadVideoID(videoId)
         }
         
         self.videoPlayer.delegate = self
@@ -54,7 +53,7 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
     
     func playerReady(_ videoPlayer: YouTubePlayerView) {
         SVProgressHUD.dismiss()
-        if let startTimeString = selectedVideo?.starttime {
+        if let startTimeString = selectedVideo?.startTime {
             if let startTimeFloat = NumberFormatter().number(from: startTimeString) {
                 print("Starting at \(startTimeFloat)")
                  videoPlayer.seekTo(startTimeFloat.floatValue, seekAhead: true)
@@ -64,7 +63,7 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
     
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
         if playerState == .Paused {
-            selectedVideo?.starttime = videoPlayer.getCurrentTime()
+            selectedVideo?.startTime = videoPlayer.getCurrentTime()
             saveData()
         }
     }

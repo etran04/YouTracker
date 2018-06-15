@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0725F99020D34857009F9E0A /* VideoSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725F98F20D34857009F9E0A /* VideoSearchVC.swift */; };
+		0725F99020D34857009F9E0A /* SearchVideoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725F98F20D34857009F9E0A /* SearchVideoTableVC.swift */; };
 		07D62BF820D2E393009BCE28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D62BF720D2E393009BCE28 /* AppDelegate.swift */; };
 		07D62BFA20D2E393009BCE28 /* SingleVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D62BF920D2E393009BCE28 /* SingleVideoVC.swift */; };
 		07D62BFD20D2E393009BCE28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D62BFB20D2E393009BCE28 /* Main.storyboard */; };
 		07D62C0020D2E393009BCE28 /* YouTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07D62BFE20D2E393009BCE28 /* YouTracker.xcdatamodeld */; };
 		07D62C0220D2E393009BCE28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D62C0120D2E393009BCE28 /* Assets.xcassets */; };
 		07D62C0520D2E393009BCE28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D62C0320D2E393009BCE28 /* LaunchScreen.storyboard */; };
-		07D62C0D20D2E3D3009BCE28 /* VideosTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D62C0C20D2E3D3009BCE28 /* VideosTableVC.swift */; };
+		07D62C0D20D2E3D3009BCE28 /* SavedVideosTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D62C0C20D2E3D3009BCE28 /* SavedVideosTableVC.swift */; };
 		07D62C0F20D2ED1F009BCE28 /* VideoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D62C0E20D2ED1F009BCE28 /* VideoTableCell.swift */; };
 		07D62C1720D2F022009BCE28 /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D62C1520D2F022009BCE28 /* VideoTableViewCell.xib */; };
+		07FAD90D20D45D9F004DED7D /* SearchedVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FAD90C20D45D9F004DED7D /* SearchedVideo.swift */; };
 		8E20347438EBE6D3EF65BD87 /* Pods_YouTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2377D35724ACCD44FD5B001 /* Pods_YouTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0725F98F20D34857009F9E0A /* VideoSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSearchVC.swift; sourceTree = "<group>"; };
+		0725F98F20D34857009F9E0A /* SearchVideoTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVideoTableVC.swift; sourceTree = "<group>"; };
 		07D62BF420D2E393009BCE28 /* YouTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D62BF720D2E393009BCE28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07D62BF920D2E393009BCE28 /* SingleVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVideoVC.swift; sourceTree = "<group>"; };
@@ -30,9 +31,10 @@
 		07D62C0120D2E393009BCE28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07D62C0420D2E393009BCE28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07D62C0620D2E393009BCE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07D62C0C20D2E3D3009BCE28 /* VideosTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTableVC.swift; sourceTree = "<group>"; };
+		07D62C0C20D2E3D3009BCE28 /* SavedVideosTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedVideosTableVC.swift; sourceTree = "<group>"; };
 		07D62C0E20D2ED1F009BCE28 /* VideoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableCell.swift; sourceTree = "<group>"; };
 		07D62C1520D2F022009BCE28 /* VideoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTableViewCell.xib; sourceTree = "<group>"; };
+		07FAD90C20D45D9F004DED7D /* SearchedVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedVideo.swift; sourceTree = "<group>"; };
 		B2377D35724ACCD44FD5B001 /* Pods_YouTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF12251E4C838C4BEE04EE97 /* Pods-YouTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-YouTracker/Pods-YouTracker.release.xcconfig"; sourceTree = "<group>"; };
 		F3A8C3B5EB345EEB23EF2533 /* Pods-YouTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YouTracker/Pods-YouTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				07D62BFE20D2E393009BCE28 /* YouTracker.xcdatamodeld */,
+				07FAD90C20D45D9F004DED7D /* SearchedVideo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,8 +107,8 @@
 			children = (
 				07D62C0E20D2ED1F009BCE28 /* VideoTableCell.swift */,
 				07D62BF920D2E393009BCE28 /* SingleVideoVC.swift */,
-				07D62C0C20D2E3D3009BCE28 /* VideosTableVC.swift */,
-				0725F98F20D34857009F9E0A /* VideoSearchVC.swift */,
+				07D62C0C20D2E3D3009BCE28 /* SavedVideosTableVC.swift */,
+				0725F98F20D34857009F9E0A /* SearchVideoTableVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -216,12 +219,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-YouTracker/Pods-YouTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouTubePlayer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,11 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07FAD90D20D45D9F004DED7D /* SearchedVideo.swift in Sources */,
 				07D62BFA20D2E393009BCE28 /* SingleVideoVC.swift in Sources */,
-				0725F99020D34857009F9E0A /* VideoSearchVC.swift in Sources */,
+				0725F99020D34857009F9E0A /* SearchVideoTableVC.swift in Sources */,
 				07D62BF820D2E393009BCE28 /* AppDelegate.swift in Sources */,
 				07D62C0020D2E393009BCE28 /* YouTracker.xcdatamodeld in Sources */,
-				07D62C0D20D2E3D3009BCE28 /* VideosTableVC.swift in Sources */,
+				07D62C0D20D2E3D3009BCE28 /* SavedVideosTableVC.swift in Sources */,
 				07D62C0F20D2ED1F009BCE28 /* VideoTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

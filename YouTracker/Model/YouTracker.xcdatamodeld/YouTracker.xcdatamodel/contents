@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Video" representedClassName=".Video" syncable="YES" codeGenerationType="class">
-        <attribute name="starttime" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="SavedVideo" representedClassName=".SavedVideo" syncable="YES" codeGenerationType="class">
+        <attribute name="startTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Video" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="SavedVideo" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

@@ -8,6 +8,7 @@ target 'YouTracker' do
   # Pods for YouTracker
 
 pod 'Alamofire'
+pod 'SwiftyJSON'
 pod 'SVProgressHUD'
 pod 'YouTubePlayer'
 

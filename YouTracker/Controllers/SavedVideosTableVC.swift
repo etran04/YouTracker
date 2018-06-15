@@ -1,5 +1,5 @@
 //
-//  VideosTableVC.swift
+//  SavedVideosTableVC.swift
 //  YouTracker
 //
 //  Created by Eric Tran on 6/14/18.
@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class VideosTableVC: UITableViewController {
+class SavedVideosTableVC: UITableViewController {
 
-    var videos = [Video]()
+    var videos = [SavedVideo]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let wreckItRalphURL = "https://www.youtube.com/watch?v=_BcYBFC6zfY"
     
@@ -55,10 +55,15 @@ class VideosTableVC: UITableViewController {
         var textField = UITextField()
         let alert = UIAlertController(title: "Youtube Video", message: "Add Youtube Video", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Video", style: .default) { (action) in
-            let newVideo = Video(context: self.context)
+            
+            if textField.text!.isEmpty {
+                return
+            }
+            
+            let newVideo = SavedVideo(context: self.context)
             newVideo.title = textField.text!
-            newVideo.url = textField.text!
-            newVideo.starttime = "0"
+            newVideo.videoId = textField.text!
+            newVideo.startTime = "0"
             self.videos.append(newVideo)
             self.saveData()
         }
@@ -100,7 +105,7 @@ class VideosTableVC: UITableViewController {
     }
     
     func loadData() {
-        let request : NSFetchRequest<Video> = Video.fetchRequest()
+        let request : NSFetchRequest<SavedVideo> = SavedVideo.fetchRequest()
         do {
             videos = try context.fetch(request)
         } catch {

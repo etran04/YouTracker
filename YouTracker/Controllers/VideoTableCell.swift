@@ -1,5 +1,5 @@
 //
-//  VideoTableViewCell.swift
+//  VideoTableCell.swift
 //  YouTracker
 //
 //  Created by Eric Tran on 6/14/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideoTableViewCell: UITableViewCell {
+class VideoTableCell: UITableViewCell {
 
     var url : String?
     var title : String?

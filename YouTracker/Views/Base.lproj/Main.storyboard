@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Ye-W0-GhK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ouv-YD-61Y">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,35 +10,62 @@
     </dependencies>
     <scenes>
         <!--Search Videos-->
-        <scene sceneID="meI-MY-BZk">
+        <scene sceneID="PSr-Ci-hM1">
             <objects>
-                <viewController id="VEC-3R-lUW" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JO1-MC-RtH">
+                <tableViewController id="Al9-n0-Oqm" customClass="VideoSearchVC" customModule="YouTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Tq-BH-QqX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UX7-HL-MR4">
-                                <rect key="frame" x="0.0" y="116" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="VEC-3R-lUW" id="Uvb-c3-imb"/>
-                                </connections>
-                            </searchBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="5dW-wx-7Fk"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Search Videos" id="qXD-9h-CsN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="er1-Pk-rM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="lej-mp-cFJ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uiT-ub-YGB">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uiT-ub-YGB" id="tlq-Vt-kHR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Al9-n0-Oqm" id="hDZ-FO-mC4"/>
+                            <outlet property="delegate" destination="Al9-n0-Oqm" id="fKU-h5-Jlb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search Videos" id="yXu-8G-brX"/>
+                    <connections>
+                        <outlet property="searchBar" destination="lej-mp-cFJ" id="X0g-ul-5dc"/>
+                        <segue destination="Umh-oX-lwC" kind="show" id="Lc5-yl-XSY"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LCC-aO-XtS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1626" y="-493"/>
+            <point key="canvasLocation" x="-1626" y="-459"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
+        <scene sceneID="syW-Vs-89L">
+            <objects>
+                <viewController id="Umh-oX-lwC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QAy-o1-dYW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4dn-vp-NbD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WJv-Cj-njS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-791" y="-459"/>
+        </scene>
+        <!--Video Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SingleVideoVC" customModule="YouTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Video Title" id="BYZ-38-t0r" customClass="SingleVideoVC" customModule="YouTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-790" y="185"/>
+            <point key="canvasLocation" x="-791" y="376"/>
         </scene>
         <!--Saved Videos-->
         <scene sceneID="RUg-Dx-IYt">
@@ -84,7 +111,6 @@
                             <outlet property="delegate" destination="cnq-4o-sfO" id="DFa-Q1-8J1"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="wl7-JL-ZlJ"/>
                     <navigationItem key="navigationItem" title="Saved Videos" id="CYQ-DV-49Q">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eMP-5N-qED">
                             <connections>
@@ -98,12 +124,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9XH-Dt-9ZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1626" y="185"/>
+            <point key="canvasLocation" x="-1626" y="376"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Saved Videos Nav Controller-->
         <scene sceneID="2i1-aI-2k8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Ye-W0-GhK" sceneMemberID="viewController">
+                <navigationController title="Saved Videos Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="4Ye-W0-GhK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="0mm-fE-esA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="j51-lh-eyY">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -117,27 +144,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vY-yp-prg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2492" y="185"/>
+            <point key="canvasLocation" x="-2492" y="376"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Initial Tab Controller-->
         <scene sceneID="OZu-i9-qNq">
             <objects>
-                <tabBarController id="Ouv-YD-61Y" sceneMemberID="viewController">
+                <tabBarController title="Initial Tab Controller" id="Ouv-YD-61Y" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Exc-cX-J28">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="1" green="0.3710446818" blue="0.36925272329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="tNc-7w-Jfx" kind="relationship" relationship="viewControllers" id="ehw-QA-rS1"/>
+                        <segue destination="4Ye-W0-GhK" kind="relationship" relationship="viewControllers" id="yLk-k8-cOg"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XOy-7X-m88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3271" y="-7"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search Videos Nav Controller-->
         <scene sceneID="lw1-Ia-eye">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tNc-7w-Jfx" sceneMemberID="viewController">
+                <navigationController title="Search Videos Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="tNc-7w-Jfx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="cjP-Xt-tMy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="OZU-cQ-6RW">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -146,12 +178,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="VEC-3R-lUW" kind="relationship" relationship="rootViewController" id="4dX-rh-7WM"/>
+                        <segue destination="Al9-n0-Oqm" kind="relationship" relationship="rootViewController" id="lOn-g8-gFc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJf-tQ-dDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2492" y="-493"/>
+            <point key="canvasLocation" x="-2492" y="-459"/>
         </scene>
     </scenes>
 </document>

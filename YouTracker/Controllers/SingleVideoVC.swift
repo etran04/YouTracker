@@ -25,6 +25,11 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let title = selectedVideo?.title {
+            self.title = title
+            adjustLargeTitleSize()
+        }
+        
         // Load video from YouTube URL
         SVProgressHUD.show()
         
@@ -72,6 +77,25 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
         } catch {
             print (error)
         }
+    }
+    
+    // MARK: Extra Helper Methods
+    // https://stackoverflow.com/questions/47146606/my-navigation-bars-large-title-is-too-wide-how-to-fix-that
+    func adjustLargeTitleSize() {
+        guard let title = title, #available(iOS 11.0, *) else { return }
+        
+        let maxWidth = UIScreen.main.bounds.size.width - 60
+        var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
+        var width = title.size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]).width
+        
+        while width > maxWidth {
+            fontSize -= 1
+            width = title.size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]).width
+        }
+        
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: fontSize)
+        ]
     }
 }
 

@@ -14,11 +14,8 @@ import CoreData
 class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
 
     @IBOutlet var videoPlayer: YouTubePlayerView!
-    var selectedVideo : SavedVideo? {
-        didSet {
-            
-        }
-    }
+    var selectedVideo : SavedVideo?
+    var searchedVideo : SearchedVideo?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -27,13 +24,25 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
         
         if let title = selectedVideo?.title {
             self.title = title
-         //   adjustLargeTitleSize()
+            if let button = self.navigationItem.rightBarButtonItem {
+                button.isEnabled = false
+                button.tintColor = UIColor.clear
+            }
+            adjustLargeTitleSize()
+        } else if let title = searchedVideo?.title {
+            self.title = title
+            if let button = self.navigationItem.rightBarButtonItem {
+                button.isEnabled = true
+            }
+            adjustLargeTitleSize()
         }
         
         // Load video from YouTube URL
         SVProgressHUD.show()
         
         if let videoId = selectedVideo?.videoId {
+            videoPlayer.loadVideoID(videoId)
+        } else if let videoId = searchedVideo?.videoId {
             videoPlayer.loadVideoID(videoId)
         }
         
@@ -58,13 +67,18 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
                 print("Starting at \(startTimeFloat)")
                  videoPlayer.seekTo(startTimeFloat.floatValue, seekAhead: true)
             }
+        } else {
+            videoPlayer.play()
         }
     }
     
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
         if playerState == .Paused {
-            selectedVideo?.startTime = videoPlayer.getCurrentTime()
-            saveData()
+            if selectedVideo != nil {
+                saveCurrentTimeForSavedVideo()
+            } else if searchedVideo != nil {
+                searchedVideo?.startTime = videoPlayer.getCurrentTime()
+            }
         }
     }
     
@@ -78,7 +92,38 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
         }
     }
     
-    // MARK: Extra Helper Methods
+    // MARK: - Outlet methods
+    
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        saveCurrentTimeForSearchVideo()
+    }
+    
+    
+    // MARK: - Extra Helper Methods
+    
+    func saveCurrentTimeForSavedVideo() {
+        selectedVideo?.startTime = videoPlayer.getCurrentTime()
+        saveData()
+        notifyUserVideoSaved()
+    }
+    
+    func saveCurrentTimeForSearchVideo() {
+        let toSaveVideo = SavedVideo(context: context)
+        toSaveVideo.title = searchedVideo?.title
+        toSaveVideo.thumbnail = searchedVideo?.thumbnail
+        toSaveVideo.videoId = searchedVideo?.videoId
+        toSaveVideo.startTime = searchedVideo?.startTime
+        saveData()
+        notifyUserVideoSaved()
+    }
+    
+    func notifyUserVideoSaved() {
+        let alert = UIAlertController(title: "Current time video saved", message: "Video saved!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     // https://stackoverflow.com/questions/47146606/my-navigation-bars-large-title-is-too-wide-how-to-fix-that
     func adjustLargeTitleSize() {
         guard let title = title, #available(iOS 11.0, *) else { return }

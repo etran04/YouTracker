@@ -23,6 +23,7 @@ class SearchVideoTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchBar.delegate = self
+        self.searchBar.placeholder = "Search title of video"
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,24 +47,35 @@ class SearchVideoTableVC: UITableViewController {
     }
     
     // MARK: - Table view delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToVideo", sender: self)
+    }
+    
+    // MARK: - Navigation methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! SingleVideoVC
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destVC.searchedVideo = searchedVideos[indexPath.row]
+        }
+    }
 }
 
 // MARK: - Search bar delegate
 extension SearchVideoTableVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // TODO: Query Youtube API for videos
-        
         if !searchBar.text!.isEmpty {
             if let searchText = searchBar.text {
-                // Form the request URL string.
-                let urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=\(searchText)&type=video&key=\(self.apiKey)"
-                
+                let parameters: Parameters =
+                    ["part" : "snippet",
+                     "q" : searchText,
+                     "type" : "video",
+                     "key" : self.apiKey,
+                     "maxResults" : "25"]
+                let requestURL = "https://www.googleapis.com/youtube/v3/search"
                 SVProgressHUD.show()
-                Alamofire.request(urlString).responseJSON(completionHandler: { (response) in
-//                    print("Request: \(String(describing: response.request))")   // original url request
-//                    print("Response: \(String(describing: response.response))") // http url response
-//                    print("Result: \(response.result)")                         // response serialization result
-                    
+                
+                Alamofire.request(requestURL, parameters: parameters).responseJSON(completionHandler: { (response) in
+
                     if let json = response.result.value {
                         let convertedJSON = JSON(json)
                         let fetchedVideos = convertedJSON["items"]
@@ -92,6 +104,9 @@ extension SearchVideoTableVC: UISearchBarDelegate {
                     SVProgressHUD.dismiss()
                 })
             }
+        } else {
+            searchedVideos = [SearchedVideo]()
+            self.tableView.reloadData()
         }
     }
 }

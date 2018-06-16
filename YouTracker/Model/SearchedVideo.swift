@@ -10,6 +10,7 @@ import Foundation
 
 class SearchedVideo {
     var title : String?
-    var thumbnail: String?
-    var videoId: String?
+    var thumbnail : String?
+    var videoId : String?
+    var startTime : String?
 }

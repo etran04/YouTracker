@@ -109,4 +109,11 @@ extension SearchVideoTableVC: UISearchBarDelegate {
             self.tableView.reloadData()
         }
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            searchedVideos = [SearchedVideo]()
+            self.tableView.reloadData()
+        }
+    }
 }

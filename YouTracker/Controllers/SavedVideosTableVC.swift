@@ -22,9 +22,7 @@ class SavedVideosTableVC: UITableViewController {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
-//        self.tableView.addSubview(refreshControl)
-//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "videoTableCell")
-        
+
         loadData()
     }
     

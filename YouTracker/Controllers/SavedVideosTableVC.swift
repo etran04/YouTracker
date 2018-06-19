@@ -13,11 +13,24 @@ class SavedVideosTableVC: UITableViewController {
 
     var videos = [SavedVideo]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let wreckItRalphURL = "https://www.youtube.com/watch?v=_BcYBFC6zfY"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Refresh control add in tableview.
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
+//        self.tableView.addSubview(refreshControl)
+//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "videoTableCell")
+        
         loadData()
+    }
+    
+    @objc func refresh(_ sender: Any) {
+        loadData()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,6 +121,10 @@ class SavedVideosTableVC: UITableViewController {
         let request : NSFetchRequest<SavedVideo> = SavedVideo.fetchRequest()
         do {
             videos = try context.fetch(request)
+            
+            if let refreshControl = self.refreshControl {
+                refreshControl.endRefreshing()
+            }
         } catch {
             print(error)
         }

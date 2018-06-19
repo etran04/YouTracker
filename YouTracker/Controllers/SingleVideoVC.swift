@@ -28,13 +28,13 @@ class SingleVideoVC: UIViewController, YouTubePlayerDelegate {
                 button.isEnabled = false
                 button.tintColor = UIColor.clear
             }
-            adjustLargeTitleSize()
+//            adjustLargeTitleSize()
         } else if let title = searchedVideo?.title {
             self.title = title
             if let button = self.navigationItem.rightBarButtonItem {
                 button.isEnabled = true
             }
-            adjustLargeTitleSize()
+//            adjustLargeTitleSize()
         }
         
         // Load video from YouTube URL
